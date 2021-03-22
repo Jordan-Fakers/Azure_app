@@ -1,0 +1,50 @@
+- name: Configure VM
+  hosts: azure-vm
+  remote_user: TheOneAboveAlls
+  become: yes 
+  become_method: sudo
+  tasks:
+    - name: install psycopg2
+      pip:
+        name: psycopg2-binary
+    - name: install flask
+      pip:
+        name: flask
+        state: latest
+    - name : installer git
+      apt:
+        name: git
+        update_cache: yes
+        state: latest 
+    - name: install pip3
+      become: yes
+      apt:
+        name:  python3-pip
+        update_cache: yes
+    - name: Install PostgreSQL
+      apt: 
+        name: postgresql
+        update_cache: yes
+        state: latest
+    - name : install module avec pip3
+      pip:
+        name:
+          - psycopg2-binary
+          - Flask
+        executable: pip3
+    - name: Modification du mot de passe de postgres
+      become: yes
+      become_method: sudo
+      become_user: postgres
+      postgresql_user:
+        db: postgres
+        name: postgres
+        password: "123"
+    - name: Creation de DB
+      postgresql_db:
+        name: ansibledb
+        owner: postgres
+        login_host: localhost
+        login_password: 123
+        login_user: postgres
+        state: present
