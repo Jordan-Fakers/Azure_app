@@ -1,17 +1,38 @@
 import psycopg2
+import os
+import logging
+
+logging.basicConfig(filename='db_log.txt', level=logging.DEBUG,format='%(asctime)s %(levelname)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 def connection_db ():
     try:
         print("1")
-        #J'utilise l'ip public Azure pour me connecter à ma VM et aller sur le PG dessus
-        cnx = psycopg2.connect(host= os.getenv('PG_HOST'),
+        
+        conn = psycopg2.connect(host= os.getenv('PG_HOST'),
                             user= os.getenv('PG_USER'),
                             database= os.getenv('PG_DATABASE'),
                             password= os.getenv('PG_PASSWORD'))
                                         
-        print("Connected to database ")
-        logging.info("[FLASK] Successfully connected to your database") 
-        return cnx
+        logging.info("[BDD] Successfully connected to your database") 
+        return conn
     except Exception as e:
-        logging.warning("[FLASK] message error:  %s", (e))
-    return cnx
+        logging.warning("[BDD] message error:  %s", (e))
+    return conn
+
+def select_from_db():
+    try:
+        co = connection_db()
+        cur = co.cursor()
+        logging.info("[BDD] flask successfully connected to the databse")
+        cur.execute("select * from articles")
+        results = cur.fetchall()
+        for i in results:
+            print(i)
+        logging.info("[FLASK] data successufully fetch from the database")
+        return results
+
+    except Exception as e:
+        logging.warning("[FLASK] fetch of the database failed, error: %s",(e))
+
+        
+
