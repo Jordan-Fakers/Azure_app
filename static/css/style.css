@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.subbar{
+    display: flex;
+    justify-content: center;
+}
