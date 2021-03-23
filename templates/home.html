@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,19 @@
     <title>Azuru</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
     <div class="container">
         <H2>
-            Bienvenue a toi aventurier perdu
+            Bienvenue a toi jeune entrepreneurs
         </H2>
         <div class="subbar">
-            <input placeholder="email" type="text">
-            <a href="/submit"><button type="submit">submit</button></a>
+            <form action="/submit" method="POST">
+                <input placeholder="email" name="email" type="text">
+                <button type="submit">Envoyer</button>
+            </form>
         </div>
     </div>
 </body>
+
 </html>

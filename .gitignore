@@ -3,3 +3,4 @@ hosts
 __pycache__
 .venv
 .azure
+.env
