@@ -4,3 +4,4 @@ __pycache__
 .venv
 .azure
 .env
+my_log.txt
