@@ -7,3 +7,4 @@ __pycache__
 .env
 my_log.txt
 db_log.txt
+scrap_log.txt

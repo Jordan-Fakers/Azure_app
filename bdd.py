@@ -24,15 +24,13 @@ def select_from_db():
         co = connection_db()
         cur = co.cursor()
         logging.info("[BDD] flask successfully connected to the databse")
-        cur.execute("select * from articles")
+        cur.execute("select * from articles ORDER BY id DESC LIMIT 5")
         results = cur.fetchall()
-        for i in results:
-            print(i)
         logging.info("[FLASK] data successufully fetch from the database")
         return results
 
     except Exception as e:
-        logging.warning("[FLASK] fetch of the database failed, error: %s",(e))
+        logging.info("[FLASK] fetch of the database failed, error: %s",(e))
 
         
 
