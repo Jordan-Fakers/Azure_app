@@ -1,6 +1,9 @@
 import os
+from dotenv import load_dotenv
 import smtplib, ssl
 from email.mime.text import MIMEText
+
+load_dotenv()
 
 mail_sender = os.getenv('SENDER_MAIL')
 password = os.getenv('MAIL_PASS')
