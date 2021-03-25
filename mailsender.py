@@ -48,14 +48,14 @@ def go_mail(mail, data_struc):
 
 def table_data(my_tuple):
     #initialisation du tableau
-    row =""
+    row =''
     for i in range (len(my_tuple)):
         row +="<tr>"
-        row += f"<td>{my_tuple[i][1]}</td>"
-        row += f"<td>{my_tuple[i][2]}</td>"
-        row += f"<td>{my_tuple[i][3]}</td>"
-        row += f"<td>{my_tuple[i][4]}</td>"
-        row += f"</tr>\n"
+        row += f'<td>{my_tuple[i][1]}</td>'
+        row += f'<td>{my_tuple[i][2]}</td>'
+        row += f'<td>{my_tuple[i][3]}</td>'
+        row += f'<td>{my_tuple[i][4]}</td>'
+        row += f'</tr>\n'
     return row
 
 def htmlPage (my_tuple):

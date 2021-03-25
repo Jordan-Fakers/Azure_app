@@ -8,3 +8,4 @@ __pycache__
 my_log.txt
 db_log.txt
 scrap_log.txt
+*.pyc
