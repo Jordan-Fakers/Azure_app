@@ -31,7 +31,12 @@ jobs:
         envkey_PG_USER: ${{ secrets.PG_USER }}
         envkey_PG_DATABSE: ${{ secrets.PG_DATABASE }}
         file_name: .env
-    
+        
+    - name: install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
     - name: run tests
       run: python3 tests.py
 
